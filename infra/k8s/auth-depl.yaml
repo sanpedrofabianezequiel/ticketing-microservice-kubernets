@@ -17,6 +17,7 @@ spec:
       containers:
         - name: auth
           image: sanpedrofabianezequiel/auth
+        #image: us.gcr.io/id-project/auth # for google cloud build adn commend local push
 ---
 apiVersion: v1
 kind: Service

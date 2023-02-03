@@ -7,7 +7,10 @@ deploy:
 build:
   local:
     push: false
+  ##googleCloudBuild:
+  ##  projectId: id-project
   artifacts:
+    # - image: us.gcr.io/id-project/auth # for google cloud build adn commend local push
     - image: sanpedrofabianezequiel/auth
       context: ./auth
       docker:
