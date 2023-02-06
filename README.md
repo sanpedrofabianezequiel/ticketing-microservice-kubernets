@@ -3,6 +3,10 @@
 skaffold dev
 ```
 
+```
+docker push idImage|user
+```
+
 ### Nginx
 - https://kubernetes.github.io/ingress-nginx/deploy/
 ```
@@ -38,6 +42,7 @@ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 - kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 - kubectl get secrets
 - kubectl describe pod <idPod>
+- kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 
 ### common package with NPMJS
 - export * from '../files'

@@ -1,42 +1,42 @@
-#Create a deployment for auth service
-#Create a service for auth service
+#Create a deployment for tickets service
+#Create a service for tickets service
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-depl
+  name: tickets-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth
+      app: tickets
   template:
     metadata:
       labels:
-        app: auth
+        app: tickets
     spec: 
       containers:
-        - name: auth
-          image: sanpedrofabianezequiel/auth
+        - name: tickets
+          image: sanpedrofabianezequiel/tickets
           env:
             - name: MONGO_URI
-              value: "mongodb://auth-mongo-srv:27017/auth"
+              value: "mongodb://tickets-mongo-srv:27017/tickets"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
 
-        #image: us.gcr.io/id-project/auth # for google cloud build adn commend local push
+        #image: us.gcr.io/id-project/tickets # for google cloud build adn commend local push
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-srv
+  name: tickets-srv
 spec:
   selector:
-    app: auth
+    app: tickets
   ports:
-    - name: auth
+    - name: tickets
       protocol: TCP
       port: 3000
       targetPort: 3000

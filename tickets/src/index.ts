@@ -1,4 +1,3 @@
-import express from 'express';
 import { json } from 'body-parser';
 import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
@@ -16,6 +15,9 @@ app.use(
 /*app.all('*',async (req,res,next) => {
   next(new NotFoundError());
 });*/
+
+
+
 const start = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI!||'');
