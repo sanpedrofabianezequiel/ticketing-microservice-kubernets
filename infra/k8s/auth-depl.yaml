@@ -17,6 +17,13 @@ spec:
       containers:
         - name: auth
           image: sanpedrofabianezequiel/auth
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+
         #image: us.gcr.io/id-project/auth # for google cloud build adn commend local push
 ---
 apiVersion: v1

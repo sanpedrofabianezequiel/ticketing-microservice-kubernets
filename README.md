@@ -32,3 +32,9 @@ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/aws/deploy.yaml -> Optional AWS
 - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml -> Mandatory Google config
 - skaffold dev -> Check deploy and connected Load balancer -> Code build for to logs
+
+### Helpers
+- kubectl get pods
+- kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+- kubectl get secrets
+- kubectl describe pod <idPod>
