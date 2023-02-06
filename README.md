@@ -38,3 +38,12 @@ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 - kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 - kubectl get secrets
 - kubectl describe pod <idPod>
+
+### common package with NPMJS
+- export * from '../files'
+- create organization into npm
+- into the package.json "name": "<idNameNPM>/packageName",
+- npm login
+- npm publish --access public|||
+- check the package pushed into npmjs.com
+- npm version patch
