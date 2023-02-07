@@ -39,6 +39,7 @@ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 
 ### Helpers
 - kubectl get pods
+- kubectl delete pod <idNamePod>
 - kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 - kubectl get secrets
 - kubectl describe pod <idPod>
@@ -52,3 +53,8 @@ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 - npm publish --access public|||
 - check the package pushed into npmjs.com
 - npm version patch
+
+
+### Nats
+- kubectl get pods
+- kubectl port-forward <idNameNats> 4222:4222
