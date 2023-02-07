@@ -6,6 +6,8 @@ import { Ticket } from '../models/tickets';
 import { requireAuth } from '../../../auth/src/middlewares/require-auth'; //NPM
 import { NotFoundError } from '../../../auth/src/errors/not-found-error';
 import { NotAuthorizedError } from '../../../auth/src/errors/not-authorized-error';
+import { natsWrapper } from '../nats-wrapper';
+import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
 
 const router = express.Router() ;
 
@@ -24,8 +26,14 @@ router.put('/api/tickets/:id', requireAuth,[
     ticket.set({
         title: req.body.title,
         price: req.body.price
-    }); //set the properties of the ticket
-    await ticket.save(); //save the ticket
+    }); 
+    await new TicketUpdatedPublisher(natsWrapper.client).publish({
+        id: ticket.id,
+        title: ticket.title,
+        price: ticket.price,
+        userId: ticket.userId,
+    });
+    await ticket.save();
     res.send(ticket);
 });
 
