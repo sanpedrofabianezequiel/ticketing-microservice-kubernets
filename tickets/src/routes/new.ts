@@ -1,6 +1,6 @@
 import express ,{ Request, Response } from 'express' ;
 import { body } from 'express-validator' ;
-import { validateRequest } from '../../../auth/src/middlewares/validate-request';
+import { requireAuth,validateRequest } from '@sgtickets/common';
 import { TicketCreatedPublisher } from '../events/publishers/ticket-created-publisher';
 import { Ticket } from '../models/tickets';
 import { natsWrapper } from '../nats-wrapper';
@@ -25,7 +25,8 @@ router.post('/api/tickets' ,[
         id: ticket.id,
         title: ticket.title,
         price: ticket.price,
-        userId: ticket.userId
+        userId: ticket.userId,
+        version: 0
     });
     res.status(201).send(ticket);
 });

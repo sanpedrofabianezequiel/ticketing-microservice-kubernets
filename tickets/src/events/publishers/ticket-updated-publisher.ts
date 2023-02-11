@@ -1,7 +1,5 @@
-import { Publisher } from '../../../../nats-test/src/events/base-publisher';
-import { Subjects } from '../../../../nats-test/src/events/subjects';
-import { TicketUpdateEvent } from '../../../../nats-test/src/events/ticket-updated-event';
+import { Publisher, Subjects, TicketUpdatedEvent } from '@sgtickets/common';
 
-export class TicketUpdatedPublisher extends Publisher<TicketUpdateEvent> {
+export class TicketUpdatedPublisher extends Publisher<TicketUpdatedEvent> {
   subject: Subjects.TicketUpdated = Subjects.TicketUpdated;
 }
